@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ddv4hkfostad5" path="res://objects/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://khlbevhh57yi" path="res://assets/sprites/tileset.png" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://7bu7ds15bkvp" path="res://objects/moving_platform.tscn" id="3_sugp2"]
+[ext_resource type="Shader" uid="uid://dkw2rdyq2j01v" path="res://shaders/saturation.gdshader" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://dbp7kch85n5ut" path="res://assets/sprites/spike.png" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://da5r34colqahc" path="res://objects/soul.tscn" id="6_tefeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("2_0wfyh")
@@ -138,6 +141,10 @@ terrain_set_0/terrain_0/name = "Main"
 terrain_set_0/terrain_0/color = Color(0, 0, 0, 1)
 sources/1 = SubResource("TileSetAtlasSource_sugp2")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sugp2"]
+shader = ExtResource("4_jyhfs")
+shader_parameter/saturation = 0.0
+
 [node name="Node2D" type="Node2D" unique_id=1580607753]
 position = Vector2(32, 32)
 
@@ -152,8 +159,25 @@ tile_set = SubResource("TileSet_1pfvr")
 position = Vector2(64, 96)
 SPEED = 65.0
 
+[node name="Sprite2D" parent="AnimatableBody2D" index="0" unique_id=1914015475]
+material = SubResource("ShaderMaterial_sugp2")
+
 [node name="PathFollow2D" parent="AnimatableBody2D/Path2D" parent_id_path=PackedInt32Array(913576872, 1502450544) index="0" unique_id=725517445]
-rotation = 1.3717655
 metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1214561481]
+position = Vector2(112, 96)
+texture = ExtResource("5_tbgi4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1061859490]
+position = Vector2(144, 96)
+texture = ExtResource("5_tbgi4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=761329392]
+position = Vector2(176, 96)
+texture = ExtResource("5_tbgi4")
+
+[node name="Soul" parent="." unique_id=1448507561 instance=ExtResource("6_tefeu")]
+position = Vector2(16, 64)
 
 [editable path="AnimatableBody2D"]

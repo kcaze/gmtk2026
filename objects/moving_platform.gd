@@ -9,8 +9,15 @@ func _ready():
 	start_position = global_position
 
 func _physics_process(delta: float) -> void:
+	var m = ($Sprite2D.material as ShaderMaterial)
+	var sat = m.get_shader_parameter("saturation")
+	
 	if is_activated():
 		time_advanced += delta
+		sat = lerpf(sat, 1.0, 0.5)
+	else:
+		sat = lerpf(sat, 0.0, 0.5)
+	m.set_shader_parameter("saturation", sat)
 	var path_length = $Path2D.curve.get_baked_length()
 	var dist_traveled = fmod(time_advanced * SPEED, 2*path_length)
 	if dist_traveled > path_length:

@@ -20,10 +20,12 @@ const COYOTE_TIME = 0.1
 const COYOTE_TIME_SPECIAL_DECAY = 0.125
 
 # Hourglass logic
-var sands_time = 0.0
-var resetting_hourglass = false
+var sands_time = 1.0
+var sands_idx = 0
+var sands_tick = 0.0
 const HOURGLASS_RADIUS = 32
-const SANDS_DECREASE_RATE = 0.3
+const SANDS_TICK_SEC = 2.0
+const NUM_SANDS_TICK = 2.0
 
 func _ready():
 	G.player = self
@@ -46,17 +48,22 @@ func _input(event):
 			velocity.x = MOVE_SPEED
 			apply_friction = false
 
+func _process(delta):
+	if velocity.x < 0:
+		$PlayerSprite.flip_h = true
+	if velocity.x > 0:
+		$PlayerSprite.flip_h = false
+	$Hourglass.frame = sands_idx
+
 func _physics_process(delta):
 	# sands_time
-	sands_time = max(sands_time-delta*SANDS_DECREASE_RATE, 0)
+	sands_time = (NUM_SANDS_TICK - sands_idx) / NUM_SANDS_TICK
+	sands_tick += delta
+	if sands_tick >= SANDS_TICK_SEC:
+		sands_tick -= SANDS_TICK_SEC
+		sands_idx = min(NUM_SANDS_TICK, sands_idx+1)
 	($HourglassEffectCollision.shape as CircleShape2D).radius = sands_time * HOURGLASS_RADIUS
 	($HourglassEffect.material as ShaderMaterial).set_shader_parameter("percent", sands_time)
-	
-	if resetting_hourglass:
-		sands_time = lerpf(sands_time, 1.0, 0.5)
-		if sands_time >= 0.99:
-			sands_time = 1.0
-			resetting_hourglass = false
 	
 	# Physics
 	apply_friction = not Input.is_action_pressed("right") and not Input.is_action_pressed("left")
@@ -74,11 +81,6 @@ func _physics_process(delta):
 	if jump_sustain > 0:
 		velocity.y = JUMP_SPEED*pow(jump_sustain/JUMP_SUSTAIN, 0.5)
 		jump_sustain -= (1 if not Input.is_action_pressed("jump") else JUMP_SUSTAIN_DECAY_HELD)*delta
-		
-		# Hit apex of jump, so reset hourglass
-		if jump_sustain <= 0:
-			resetting_hourglass = true
-		
 		jump_sustain = max(0, jump_sustain)
 
 	velocity += delta*Vector2(0, GRAVITY)
@@ -101,3 +103,13 @@ func _physics_process(delta):
 		velocity.y = max(velocity.y, 0)
 	
 	current_global_position = global_position
+
+
+func _on_hourglass_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "flip":
+		$Hourglass.rotation_degrees = 0
+
+func flip_hourglass():
+	sands_idx = NUM_SANDS_TICK - sands_idx
+	sands_tick = 0
+	$Hourglass/AnimationPlayer.play("flip")

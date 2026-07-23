@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://da5r34colqahc"]
+
+[ext_resource type="Texture2D" uid="uid://0jgf5a6qx64o" path="res://assets/sprites/hourglass_flip.png" id="1_wkc2c"]
+[ext_resource type="Texture2D" uid="uid://c3j7a2u8lefmi" path="res://assets/sprites/soul_inactive.png" id="2_fdxuk"]
+[ext_resource type="Script" uid="uid://ckm21r4po8x6m" path="res://objects/soul.gd" id="2_p35jr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6xl0"]
+atlas = ExtResource("1_wkc2c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg7x1"]
+atlas = ExtResource("2_fdxuk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbgi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6xl0")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg7x1")
+}],
+"loop": 1,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
+size = Vector2(9, 15)
+
+[node name="Soul" type="AnimatedSprite2D" unique_id=1448507561]
+sprite_frames = SubResource("SpriteFrames_tbgi4")
+animation = &"active"
+script = ExtResource("2_p35jr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=849947911]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=328915515]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_1pfvr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
