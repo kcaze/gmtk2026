@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://7bu7ds15bkvp"]
+
+[ext_resource type="Script" uid="uid://b83xxd0rj7hvy" path="res://objects/moving_platform.gd" id="1_isb40"]
+[ext_resource type="Texture2D" uid="uid://b3d3yevr1yku3" path="res://assets/sprites/moving_platform.png" id="1_kyp7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
+size = Vector2(64, 32)
+
+[sub_resource type="Curve2D" id="Curve2D_isb40"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -63.903805, -0.1978446, 63.903805, 0.1978446, 80, 80, 0, 0, 0, 0, 160, 0)
+}
+point_count = 3
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=913576872]
+script = ExtResource("1_isb40")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1914015475]
+texture = ExtResource("1_kyp7m")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546464112]
+shape = SubResource("RectangleShape2D_1pfvr")
+metadata/_edit_lock_ = true
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1502450544]
+curve = SubResource("Curve2D_isb40")
+metadata/_edit_lock_ = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=725517445]
+rotation = 1.5707964

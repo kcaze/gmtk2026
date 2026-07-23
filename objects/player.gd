@@ -19,6 +19,15 @@ const LAND_SQUASH = Vector2(1.3, 0.7)
 const COYOTE_TIME = 0.1
 const COYOTE_TIME_SPECIAL_DECAY = 0.125
 
+# Hourglass logic
+var sands_time = 0.0
+var resetting_hourglass = false
+const HOURGLASS_RADIUS = 32
+const SANDS_DECREASE_RATE = 0.3
+
+func _ready():
+	G.player = self
+
 func _input(event):
 	if event.is_action_pressed("jump"):
 		jump_buffer = JUMP_BUFFER
@@ -37,9 +46,19 @@ func _input(event):
 			velocity.x = MOVE_SPEED
 			apply_friction = false
 
-
-
 func _physics_process(delta):
+	# sands_time
+	sands_time = max(sands_time-delta*SANDS_DECREASE_RATE, 0)
+	($HourglassEffectCollision.shape as CircleShape2D).radius = sands_time * HOURGLASS_RADIUS
+	($HourglassEffect.material as ShaderMaterial).set_shader_parameter("percent", sands_time)
+	
+	if resetting_hourglass:
+		sands_time = lerpf(sands_time, 1.0, 0.5)
+		if sands_time >= 0.99:
+			sands_time = 1.0
+			resetting_hourglass = false
+	
+	# Physics
 	apply_friction = not Input.is_action_pressed("right") and not Input.is_action_pressed("left")
 	
 	if is_on_floor():
@@ -55,6 +74,11 @@ func _physics_process(delta):
 	if jump_sustain > 0:
 		velocity.y = JUMP_SPEED*pow(jump_sustain/JUMP_SUSTAIN, 0.5)
 		jump_sustain -= (1 if not Input.is_action_pressed("jump") else JUMP_SUSTAIN_DECAY_HELD)*delta
+		
+		# Hit apex of jump, so reset hourglass
+		if jump_sustain <= 0:
+			resetting_hourglass = true
+		
 		jump_sustain = max(0, jump_sustain)
 
 	velocity += delta*Vector2(0, GRAVITY)
