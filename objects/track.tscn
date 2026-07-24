@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://0gvlnl4wwaf1"]
+
+[ext_resource type="Script" uid="uid://cau62jdxm3d2a" path="res://objects/track.gd" id="1_3rvpe"]
+
+[sub_resource type="Curve2D" id="Curve2D_u0bf8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[node name="Track" type="Path2D" unique_id=1100748682]
+curve = SubResource("Curve2D_u0bf8")
+script = ExtResource("1_3rvpe")
+
+[node name="DebugLine2D" type="Line2D" parent="." unique_id=1140671325]
+width = 2.0
+default_color = Color(1, 0, 1, 1)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=1597926098]

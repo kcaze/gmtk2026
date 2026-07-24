@@ -4,6 +4,7 @@ extends AnimatableBody2D
 var time_advanced = 0.0
 var start_position = Vector2(0,0)
 var forwards_dir = true
+@onready var track : Track = get_parent()
 
 func _ready():
 	start_position = global_position
@@ -18,12 +19,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		sat = lerpf(sat, 0.0, 0.5)
 	m.set_shader_parameter("saturation", sat)
-	var path_length = $Path2D.curve.get_baked_length()
+	var path_length = track.curve.get_baked_length()
 	var dist_traveled = fmod(time_advanced * SPEED, 2*path_length)
 	if dist_traveled > path_length:
 		dist_traveled = 2*path_length - dist_traveled
-	$Path2D/PathFollow2D.progress = dist_traveled
-	var dest = start_position + $Path2D/PathFollow2D.position 
+	track.get_node("PathFollow2D").progress = dist_traveled
+	var dest = start_position + track.get_node("PathFollow2D").position 
 	global_position = dest
 
 func is_activated():
