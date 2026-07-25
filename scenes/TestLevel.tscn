@@ -1,0 +1,56 @@
+[gd_scene format=4 uid="uid://ddfvwduvewucl"]
+
+[ext_resource type="Script" uid="uid://db4jkwulwv3y8" path="res://objects/level.gd" id="1_5n3yh"]
+[ext_resource type="TileSet" uid="uid://vudl0q81p0y8" path="res://assets/tilesets/main_tileset.tres" id="2_0n17k"]
+[ext_resource type="PackedScene" uid="uid://b7my11mkmx461" path="res://objects/centipede.tscn" id="2_g3y3g"]
+[ext_resource type="PackedScene" uid="uid://0gvlnl4wwaf1" path="res://objects/track.tscn" id="3_g3y3g"]
+[ext_resource type="PackedScene" uid="uid://dpc2j7332xwp3" path="res://objects/platform_1_2.tscn" id="4_6e24c"]
+[ext_resource type="PackedScene" uid="uid://da5r34colqahc" path="res://objects/soul.tscn" id="5_5ycvo"]
+[ext_resource type="PackedScene" uid="uid://dj43pgk0bolc4" path="res://objects/fan.tscn" id="6_7i0bt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
+size = Vector2(256, 160)
+
+[sub_resource type="Curve2D" id="Curve2D_5qu1l"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96)
+}
+point_count = 2
+
+[node name="Level" type="Node2D" unique_id=575520408]
+script = ExtResource("1_5n3yh")
+
+[node name="Centipede" parent="." unique_id=1361476616 instance=ExtResource("2_g3y3g")]
+position = Vector2(-32, -24)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1960307424]
+tile_map_data = PackedByteArray("AAD4/wMAAQACAAAAAAD4/wIAAQADAAIAAAD4/wEAAQADAAIAAAD4/wAAAQADAAIAAAD3/wMAAQAAAAIAAAD3/wIAAQABAAAAAAD3/wEAAQACAAIAAAD3/wAAAQABAAEAAAACAAMAAQABAAIAAAACAAIAAQADAAAAAAABAAMAAQABAAIAAAABAAIAAQADAAAAAAAAAAMAAQABAAIAAAAAAAIAAQADAAAAAAD//wMAAQABAAIAAAD//wIAAQADAAAAAAD9/wMAAQABAAIAAAD9/wIAAQADAAAAAAD6/wMAAQAAAAIAAAD6/wIAAQABAAMAAAAIAAMAAQADAAMAAAAIAAIAAQAAAAAAAAAHAAMAAQABAAIAAAAHAAIAAQACAAAAAAAGAAMAAQABAAIAAAAGAAIAAQACAAEAAAAFAAMAAQABAAIAAAAFAAIAAQABAAEAAAAEAAMAAQABAAIAAAAEAAIAAQADAAAAAAADAAMAAQABAAIAAAADAAIAAQADAAAAAAD7/wMAAQABAAIAAAD7/wIAAQADAAAAAAD8/wMAAQABAAIAAAD8/wIAAQADAAAAAAD+/wMAAQABAAIAAAD+/wIAAQADAAAAAAD8//7/AQADAAMAAAD8//3/AQADAAEAAAD7//7/AQABAAIAAAD7//3/AQACAAEAAAD8//z/AQAAAAAAAAD7//z/AQADAAAAAAD3////AQABAAMAAAD4////AQAAAAAAAAD1////AQAAAAAAAAD0////AQADAAAAAAD2/wEAAQAAAAIAAAD2/wAAAQABAAMAAADz/wAAAQABAAIAAADz////AQACAAAAAADz//7/AQADAAIAAADz//3/AQADAAIAAADz//z/AQADAAIAAADz//v/AQADAAIAAADz//r/AQADAAIAAADz//n/AQADAAIAAADz//j/AQAAAAAAAADy/wAAAQABAAIAAADy////AQACAAEAAADy//7/AQACAAEAAADy//3/AQACAAEAAADy//z/AQACAAEAAADy//v/AQACAAEAAADy//r/AQACAAEAAADy//n/AQACAAEAAADy//j/AQADAAAAAADx/wAAAQAAAAIAAADx////AQABAAAAAADx//7/AQABAAAAAADx//3/AQABAAAAAADx//z/AQABAAAAAADx//v/AQABAAAAAADx//r/AQABAAAAAADx//n/AQABAAAAAADx//j/AQABAAMAAAD6//z/AQABAAMAAAD6//7/AQAAAAIAAAD6//3/AQABAAAAAAD5/wMAAQADAAAAAAD1/wAAAQABAAIAAAD0/wAAAQABAAIAAAD+////AQADAAMAAAD9////AQAAAAIAAAD+//3/AQADAAMAAAD9//3/AQABAAIAAAAHAAEAAQADAAIAAAAHAAAAAQAAAAAAAAAGAAEAAQACAAEAAAAGAAAAAQADAAAAAAAFAAEAAQABAAAAAAAFAAAAAQABAAMAAAAGAPz/AQADAAMAAAAGAPv/AQAAAAAAAAAFAPz/AQABAAIAAAAFAPv/AQADAAAAAAAEAPz/AQABAAIAAAAEAPv/AQADAAAAAAADAPz/AQAAAAIAAAADAPv/AQABAAMAAAA=")
+tile_set = ExtResource("2_0n17k")
+
+[node name="Exits" type="Node2D" parent="." unique_id=855449208]
+
+[node name="LevelBoundary" type="Area2D" parent="." unique_id=1533346658]
+
+[node name="Shape2D" type="CollisionShape2D" parent="LevelBoundary" unique_id=577847270]
+position = Vector2(-16, -16)
+shape = SubResource("RectangleShape2D_1pfvr")
+
+[node name="Track" parent="." unique_id=1100748682 instance=ExtResource("3_g3y3g")]
+position = Vector2(-16, -120)
+curve = SubResource("Curve2D_5qu1l")
+repeats = true
+
+[node name="AnimatableBody2D" parent="Track" unique_id=913576872 instance=ExtResource("4_6e24c")]
+metadata/_edit_lock_ = true
+
+[node name="Soul" parent="." unique_id=1448507561 instance=ExtResource("5_5ycvo")]
+position = Vector2(-64, 16)
+
+[node name="Soul2" parent="." unique_id=2114915285 instance=ExtResource("5_5ycvo")]
+position = Vector2(-32, -64)
+
+[node name="Fan" parent="." unique_id=1520780726 instance=ExtResource("6_7i0bt")]
+position = Vector2(-104, 40)
+
+[node name="Fan2" parent="." unique_id=359902899 instance=ExtResource("6_7i0bt")]
+position = Vector2(-152, -8)

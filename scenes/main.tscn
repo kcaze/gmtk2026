@@ -2,13 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://ddv4hkfostad5" path="res://objects/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://bs2qeucwtife5" path="res://main.gd" id="1_tefeu"]
+[ext_resource type="PackedScene" uid="uid://c2e6w5tmaadw" path="res://scenes/LockLevel.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cer15sainr8hb" path="res://scenes/IntroLevel.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://ddfvwduvewucl" path="res://scenes/TestLevel.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node2D" unique_id=1580607753]
 position = Vector2(32, 32)
 script = ExtResource("1_tefeu")
 
 [node name="Player" parent="." unique_id=1918047500 instance=ExtResource("1_o5qli")]
-position = Vector2(-16, 0)
+position = Vector2(368, 240)
 
-[node name="Level" parent="." unique_id=575520408 instance=ExtResource("3_sugp2")]
+[node name="Level" parent="." unique_id=575520408 instance=ExtResource("3_jyhfs")]
+position = Vector2(336, 0)
+
+[node name="IntroLevel" parent="." unique_id=1809290379 instance=ExtResource("3_sugp2")]
+
+[node name="Test" parent="." unique_id=504866152 instance=ExtResource("5_tbgi4")]
+position = Vector2(400, 304)

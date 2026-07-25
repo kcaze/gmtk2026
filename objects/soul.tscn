@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://da5r34colqahc"]
 
-[ext_resource type="Texture2D" uid="uid://0jgf5a6qx64o" path="res://assets/sprites/hourglass_flip.png" id="1_wkc2c"]
-[ext_resource type="Texture2D" uid="uid://c3j7a2u8lefmi" path="res://assets/sprites/soul_inactive.png" id="2_fdxuk"]
+[ext_resource type="Texture2D" uid="uid://dp2k3mudlejdb" path="res://assets/sprites/soul-on.png" id="1_fdxuk"]
+[ext_resource type="Texture2D" uid="uid://dwp2innbgnu7g" path="res://assets/sprites/soul-off.png" id="2_fg7x1"]
 [ext_resource type="Script" uid="uid://ckm21r4po8x6m" path="res://objects/soul.gd" id="2_p35jr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6xl0"]
-atlas = ExtResource("1_wkc2c")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x50j"]
+atlas = ExtResource("1_fdxuk")
+region = Rect2(0, 0, 6, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fg7x1"]
-atlas = ExtResource("2_fdxuk")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjeuf"]
+atlas = ExtResource("2_fg7x1")
+region = Rect2(0, 0, 6, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tbgi4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o6xl0")
+"texture": SubResource("AtlasTexture_1x50j")
 }],
 "loop": 1,
 "name": &"active",
@@ -24,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fg7x1")
+"texture": SubResource("AtlasTexture_bjeuf")
 }],
 "loop": 1,
 "name": &"inactive",
@@ -32,7 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
-size = Vector2(9, 15)
+size = Vector2(8, 10)
 
 [node name="Soul" type="AnimatedSprite2D" unique_id=1448507561]
 sprite_frames = SubResource("SpriteFrames_tbgi4")
@@ -42,10 +42,11 @@ script = ExtResource("2_p35jr")
 [node name="Area2D" type="Area2D" parent="." unique_id=849947911]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=328915515]
-position = Vector2(-0.5, 0)
+position = Vector2(0, -0.3125)
 shape = SubResource("RectangleShape2D_1pfvr")
 
 [node name="RespawnTimer" type="Timer" parent="." unique_id=2086787817]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

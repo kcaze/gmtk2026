@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dj43pgk0bolc4"]
+
+[ext_resource type="Script" uid="uid://6n3yi0asctbv" path="res://objects/fan.gd" id="1_0p0dq"]
+[ext_resource type="Texture2D" uid="uid://vdbly3qm1c6j" path="res://assets/sprites/fan.png" id="1_soj78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ubsi"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p0dq"]
+atlas = ExtResource("1_soj78")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ubsi"]
+atlas = ExtResource("1_soj78")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8qua"]
+atlas = ExtResource("1_soj78")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxgkn"]
+atlas = ExtResource("1_soj78")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jefun"]
+atlas = ExtResource("1_soj78")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7r5dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p0dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ubsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8qua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxgkn")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jefun")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_0p0dq"]
+offsets = PackedFloat32Array(0, 0.5369979, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
+size = Vector2(20, 56)
+
+[node name="Fan" type="StaticBody2D" unique_id=1520780726]
+script = ExtResource("1_0p0dq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599983830]
+shape = SubResource("RectangleShape2D_4ubsi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=971137633]
+sprite_frames = SubResource("SpriteFrames_7r5dd")
+animation = &"idle"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=877265469]
+amount = 32
+lifetime = 1.71
+emission_shape = 3
+emission_rect_extents = Vector2(5, 1)
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, -50)
+color_ramp = SubResource("Gradient_0p0dq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1681533771]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1448908338]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_1pfvr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

@@ -1,18 +1,28 @@
 extends AnimatedSprite2D
 
 var is_active = true
+var player_colliding = false
 const RESPAWN_TIME = 2
 
-func _on_body_entered(body: Node2D) -> void:
-	if body == G.player and is_active:
-		flip()
+func _process(delta: float) -> void:
+	if player_colliding and is_active:
+		_add_flip()
 
-func flip():
-	G.player.flip_hourglass()
+func _on_body_entered(body: Node2D) -> void:
+	if body == G.player:
+		player_colliding = true
+
+func _on_body_exited(body: Node2D) -> void:
+	if body == G.player:
+		player_colliding = false
+
+func _add_flip():
+	if G.player.num_flips > 0:
+		return
+	G.player.num_flips = 1
 	is_active = false
 	animation = "inactive"
 	$RespawnTimer.start(RESPAWN_TIME)
-
 
 func _on_respawn_timer_timeout() -> void:
 	is_active = true

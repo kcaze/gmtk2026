@@ -1,13 +1,14 @@
-extends AnimatableBody2D
+extends StaticBody2D
 
-@export var SPEED = 50.0
-var start_position = Vector2(0,0)
-var forwards_dir = true
-@onready var track : Track = get_parent()
 var active = false
+var player_in_fan = false
 
-func _ready():
-	start_position = global_position
+func _physics_process(delta: float) -> void:
+	if active and player_in_fan:
+		G.player.in_fans[self] = true
+	else:
+		if self in G.player.in_fans:
+			G.player.in_fans.erase(self)
 
 func _process(delta: float) -> void:
 	if not active and is_activated():
@@ -18,15 +19,13 @@ func _process(delta: float) -> void:
 func activate():
 	active = true
 	$AnimatedSprite2D.play("active")
+	$CPUParticles2D.restart()
+	$CPUParticles2D.emitting = true
 
 func deactivate():
 	active = false
 	$AnimatedSprite2D.play("idle")
-
-func _physics_process(delta: float) -> void:
-	if is_activated():
-		track.update_progress(delta*SPEED)
-	global_position = track.get_progress_position()
+	$CPUParticles2D.emitting = false
 
 func is_activated():
 	if G.player.hourglass_active:
@@ -37,3 +36,11 @@ func is_activated():
 		)
 	else:
 		return false
+
+func _on_body_entered(body: Node2D) -> void:
+	if body == G.player:
+		player_in_fan = true
+
+func _on_body_exited(body: Node2D) -> void:
+	if body == G.player:
+		player_in_fan = false

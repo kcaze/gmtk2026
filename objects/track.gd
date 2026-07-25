@@ -10,9 +10,12 @@ const TEX_NONREPEATER = preload("res://assets/sprites/track-nonrepeater.png")
 const TEX_INTERMEDIATE = preload("res://assets/sprites/track-intermediate.png")
 
 var progress = 0.0
-@onready var curve_length = curve.get_baked_length()
+var curve_length = 0.0
 
 func _ready():
+	if curve == null:
+		curve = Curve2D.new()
+	curve_length = curve.get_baked_length()
 	# Generate track sprites
 	if not Engine.is_editor_hint():
 		var pt = curve.sample_baked(0, true)
@@ -27,6 +30,7 @@ func _ready():
 			spr.position = pt
 			add_child(spr)
 		pt = curve.sample_baked(curve.get_baked_length(), true)
+		spr = Sprite2D.new()
 		spr.texture = TEX_REPEATER if repeats else TEX_NONREPEATER
 		spr.position = pt
 		add_child(spr)
