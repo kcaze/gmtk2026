@@ -1,31 +1,25 @@
 extends AnimatableBody2D
 
 @export var SPEED = 50.0
-var time_advanced = 0.0
 var start_position = Vector2(0,0)
 var forwards_dir = true
 @onready var track : Track = get_parent()
 
 func _ready():
 	start_position = global_position
+	
 
 func _physics_process(delta: float) -> void:
 	var m = ($Sprite2D.material as ShaderMaterial)
 	var sat = m.get_shader_parameter("saturation")
 	
 	if is_activated():
-		time_advanced += delta
+		track.update_progress(delta*SPEED)
 		sat = lerpf(sat, 1.0, 0.5)
 	else:
 		sat = lerpf(sat, 0.0, 0.5)
 	m.set_shader_parameter("saturation", sat)
-	var path_length = track.curve.get_baked_length()
-	var dist_traveled = fmod(time_advanced * SPEED, 2*path_length)
-	if dist_traveled > path_length:
-		dist_traveled = 2*path_length - dist_traveled
-	track.get_node("PathFollow2D").progress = dist_traveled
-	var dest = start_position + track.get_node("PathFollow2D").position 
-	global_position = dest
+	global_position = track.get_progress_position()
 
 func is_activated():
 	return $CollisionShape2D.shape.collide(

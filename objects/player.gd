@@ -14,8 +14,8 @@ const JUMP_SQUASH = Vector2(0.85, 1.1)
 const LAND_SQUASH = Vector2(1.3, 0.7)
 
 # Hourglass logic
-var sands_idx = 0
-const HOURGLASS_RADIUS = 32
+var sands_idx = NUM_SANDS_TICK
+const HOURGLASS_RADIUS = 48
 const NUM_SANDS_TICK = 2.0
 
 func _ready():
@@ -38,6 +38,7 @@ func _input(event):
 			apply_friction = false
 
 func _process(delta):
+	print(sands_idx)
 	if velocity.x < 0:
 		$PlayerSprite.flip_h = true
 	if velocity.x > 0:
@@ -46,8 +47,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	# sands_time
-	($HourglassEffectCollision.shape as CircleShape2D).radius = sands_idx * HOURGLASS_RADIUS
-	($HourglassEffect.material as ShaderMaterial).set_shader_parameter("percent", 1.0 - sands_idx / NUM_SANDS_TICK)
+	var sands_pct = 1.0 - sands_idx / NUM_SANDS_TICK
+	($HourglassEffectCollision.shape as CircleShape2D).radius = sands_pct * HOURGLASS_RADIUS
+	($HourglassEffect.material as ShaderMaterial).set_shader_parameter("percent", sands_pct)
 	
 	# Physics
 	apply_friction = not Input.is_action_pressed("right") and not Input.is_action_pressed("left")
@@ -70,7 +72,6 @@ func _physics_process(delta):
 func _on_hourglass_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "flip":
 		$Camera2D/Hourglass.rotation_degrees = 0
-		$Camera2D/HourglassBackground.frame = 0
 		if sands_idx < NUM_SANDS_TICK:
 			$Camera2D/HourglassBackground.play()
 	

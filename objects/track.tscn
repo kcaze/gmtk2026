@@ -2,14 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cau62jdxm3d2a" path="res://objects/track.gd" id="1_3rvpe"]
 
-[sub_resource type="Curve2D" id="Curve2D_u0bf8"]
-_data = {
-"points": PackedVector2Array(-99.36605, -6.7643557, 99.36605, 6.7643557, 0, 32, 0, 0, 0, 0, 0, -160)
-}
-point_count = 2
-
 [node name="Track" type="Path2D" unique_id=1100748682]
-curve = SubResource("Curve2D_u0bf8")
 script = ExtResource("1_3rvpe")
 
 [node name="DebugLine2D" type="Line2D" parent="." unique_id=1140671325]
@@ -17,3 +10,5 @@ width = 2.0
 default_color = Color(1, 0, 1, 1)
 
 [node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=1597926098]
+position = Vector2(0, 32)
+rotation = 0.06797024

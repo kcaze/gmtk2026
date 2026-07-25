@@ -394,7 +394,6 @@ debug_color = Color(0.08502967, 0.38569438, 0.87279016, 0.41960785)
 [node name="HourglassBackground" type="AnimatedSprite2D" parent="Camera2D" unique_id=1792125892]
 position = Vector2(-140, -100)
 sprite_frames = SubResource("SpriteFrames_f46kd")
-autoplay = "default"
 
 [node name="Hourglass" type="AnimatedSprite2D" parent="Camera2D" unique_id=522748104]
 position = Vector2(-139, -100)
