@@ -1,11 +1,9 @@
-[gd_scene format=3 uid="uid://155xx7s6y6ta"]
+[gd_scene format=4 uid="uid://155xx7s6y6ta"]
 
 [ext_resource type="PackedScene" uid="uid://ddv4hkfostad5" path="res://objects/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://bs2qeucwtife5" path="res://main.gd" id="1_tefeu"]
-[ext_resource type="PackedScene" uid="uid://7bu7ds15bkvp" path="res://objects/moving_platform.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://da5r34colqahc" path="res://objects/soul.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c6ri062rg4ebc" path="res://objects/LevelTemplate.tscn" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://0gvlnl4wwaf1" path="res://objects/track.tscn" id="7_tipki"]
 
 [node name="Main" type="Node2D" unique_id=1580607753]
 position = Vector2(32, 32)
@@ -14,19 +12,13 @@ script = ExtResource("1_tefeu")
 [node name="Player" parent="." unique_id=1918047500 instance=ExtResource("1_o5qli")]
 position = Vector2(-16, 48)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=721655283]
-position = Vector2(16, -48)
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
 [node name="Soul" parent="." unique_id=1448507561 instance=ExtResource("6_tefeu")]
-position = Vector2(16, 64)
+position = Vector2(-48, 112)
 
 [node name="IntroLevel" parent="." unique_id=575520408 instance=ExtResource("7_o6xl0")]
 position = Vector2(48, 96)
 
-[node name="Track" parent="." unique_id=1100748682 instance=ExtResource("7_tipki")]
-position = Vector2(80, 144)
+[node name="TileMapLayer" parent="IntroLevel" index="0" unique_id=1960307424]
+tile_map_data = PackedByteArray("AAD4/wMAAQABAAIAAAD4/wIAAQACAAAAAAD4/wEAAQADAAIAAAD4/wAAAQADAAIAAAD4////AQADAAIAAAD4//7/AQADAAIAAAD4//3/AQADAAIAAAD4//z/AQADAAIAAAD4//v/AQADAAEAAAD3/wMAAQAAAAIAAAD3/wIAAQABAAAAAAD3/wEAAQABAAAAAAD3/wAAAQABAAAAAAD3////AQABAAAAAAD3//7/AQABAAAAAAD3//3/AQABAAAAAAD3//z/AQABAAAAAAD3//v/AQABAAAAAAAEAAMAAQAAAAAAAAADAAMAAQADAAAAAAACAAMAAQADAAAAAAABAAMAAQADAAAAAAAAAAMAAQACAAAAAAAAAAIAAQAAAAAAAAD//wMAAQACAAIAAAD//wIAAQADAAAAAAD+/wMAAQABAAIAAAD+/wIAAQADAAAAAAD9/wMAAQABAAIAAAD9/wIAAQADAAAAAAD8/wMAAQABAAIAAAD8/wIAAQADAAAAAAD7/wMAAQABAAIAAAD7/wIAAQADAAAAAAD6/wMAAQABAAIAAAD6/wIAAQADAAAAAAD5/wMAAQABAAIAAAD5/wIAAQADAAAAAAAGAPv/AQADAAIAAAAGAPr/AQAAAAAAAAAFAPv/AQACAAIAAAAFAPr/AQADAAAAAAAEAPv/AQABAAIAAAAEAPr/AQADAAAAAAADAPv/AQABAAIAAAADAPr/AQADAAAAAAACAPv/AQABAAIAAAACAPr/AQADAAAAAAABAPv/AQABAAIAAAABAPr/AQADAAAAAAAAAPv/AQABAAIAAAAAAPr/AQADAAAAAAD///v/AQABAAIAAAD///r/AQADAAAAAAD+//v/AQABAAIAAAD+//r/AQADAAAAAAD9//v/AQABAAIAAAD9//r/AQADAAAAAAD8//v/AQABAAIAAAD8//r/AQADAAAAAAD7//v/AQABAAIAAAD7//r/AQADAAAAAAD6//v/AQABAAIAAAD6//r/AQADAAAAAAD5//v/AQABAAIAAAD5//r/AQADAAAAAAD4//r/AQADAAAAAAD3//r/AQABAAMAAAAGAP//AQADAAMAAAAGAP7/AQADAAIAAAAGAP3/AQADAAIAAAAGAPz/AQADAAIAAAAFAP//AQAAAAIAAAAFAP7/AQABAAAAAAAFAP3/AQABAAAAAAAFAPz/AQABAAAAAAAEAAUAAQABAAIAAAAEAAQAAQACAAAAAAADAAUAAQABAAIAAAADAAQAAQACAAEAAAACAAUAAQABAAIAAAACAAQAAQACAAEAAAABAAUAAQABAAIAAAABAAQAAQACAAEAAAAAAAUAAQABAAIAAAAAAAQAAQACAAEAAAD//wUAAQAAAAIAAAD//wQAAQABAAAAAAAIAAUAAQADAAIAAAAIAAQAAQAAAAAAAAAHAAUAAQACAAIAAAAHAAQAAQADAAAAAAAGAAUAAQABAAIAAAAGAAQAAQADAAAAAAAFAAUAAQABAAIAAAAFAAQAAQADAAAAAAAKAAcAAQADAAMAAAAKAAYAAQAAAAAAAAAJAAcAAQABAAIAAAAJAAYAAQADAAAAAAAIAAcAAQABAAIAAAAIAAYAAQACAAAAAAAHAAcAAQAAAAIAAAAHAAYAAQABAAAAAAA=")
 
-[node name="AnimatableBody2D" parent="Track" unique_id=913576872 instance=ExtResource("3_sugp2")]
+[editable path="IntroLevel"]

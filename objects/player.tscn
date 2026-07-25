@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://cu8ovol0ihq42" path="res://shaders/hourglass_effect.gdshader" id="2_nmc1l"]
 [ext_resource type="Texture2D" uid="uid://cqfxopd5sxcs5" path="res://assets/sprites/hourglass_effect.png" id="3_uxov2"]
 [ext_resource type="Texture2D" uid="uid://cxhupphn117ex" path="res://assets/sprites/hourglass.png" id="5_f46kd"]
+[ext_resource type="Texture2D" uid="uid://cxovxesyoploj" path="res://assets/sprites/hourglass_background.png" id="6_3rerk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxov2"]
 shader = ExtResource("2_nmc1l")
@@ -35,29 +36,296 @@ size = Vector2(17, 27)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1pfvr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3rerk"]
-atlas = ExtResource("5_f46kd")
-region = Rect2(0, 0, 7, 11)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rfka"]
-atlas = ExtResource("5_f46kd")
-region = Rect2(14, 0, 7, 11)
+atlas = ExtResource("6_3rerk")
+region = Rect2(0, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8sra"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(37, 0, 37, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vq5b"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(74, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nfmf"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(111, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42cpl"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(148, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqq2l"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(185, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r673r"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(222, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqnmn"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(259, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5esnd"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(296, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1o2u"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(333, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4hvt"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(370, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sux5"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(407, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqfnf"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(444, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhqug"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(481, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyhxw"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(518, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq66c"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(555, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_183dw"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(592, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nflk0"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(629, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqwil"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(666, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggel1"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(703, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8ffw"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(740, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ve04"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(777, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rhe2"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(814, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ypbn"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(851, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rsoo"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(888, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lywsn"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(925, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvk82"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(962, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77i28"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(999, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mle5l"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1036, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4kk0"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1073, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s854h"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1110, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj211"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1147, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqdjh"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1184, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5pfi"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1221, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2hc5"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1258, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sktdc"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1295, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghhh6"]
+atlas = ExtResource("6_3rerk")
+region = Rect2(1332, 0, 37, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f46kd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rfka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8sra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vq5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nfmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42cpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqq2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r673r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqnmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5esnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1o2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4hvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sux5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqfnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhqug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyhxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq66c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_183dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nflk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqwil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggel1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8ffw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ve04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rhe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ypbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rsoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lywsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvk82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77i28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mle5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4kk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s854h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj211")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqdjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5pfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2hc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sktdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghhh6")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f46kd"]
 atlas = ExtResource("5_f46kd")
-region = Rect2(28, 0, 7, 11)
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rerk"]
+atlas = ExtResource("5_f46kd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i825w"]
+atlas = ExtResource("5_f46kd")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nmc1l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f46kd")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3rerk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3rfka")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4vq5b")
+"texture": SubResource("AtlasTexture_i825w")
 }],
 "loop": 1,
 "name": &"default",
@@ -121,13 +389,21 @@ shape = SubResource("CircleShape2D_1pfvr")
 disabled = true
 debug_color = Color(0.08502967, 0.38569438, 0.87279016, 0.41960785)
 
-[node name="Hourglass" type="AnimatedSprite2D" parent="." unique_id=522748104]
-position = Vector2(16, -5)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2028351636]
+
+[node name="HourglassBackground" type="AnimatedSprite2D" parent="Camera2D" unique_id=1792125892]
+position = Vector2(-140, -100)
+sprite_frames = SubResource("SpriteFrames_f46kd")
+autoplay = "default"
+
+[node name="Hourglass" type="AnimatedSprite2D" parent="Camera2D" unique_id=522748104]
+position = Vector2(-139, -100)
 sprite_frames = SubResource("SpriteFrames_nmc1l")
 speed_scale = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hourglass" unique_id=1699364201]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/Hourglass" unique_id=1699364201]
 deterministic = true
 libraries/ = SubResource("AnimationLibrary_3rerk")
 
-[connection signal="animation_finished" from="Hourglass/AnimationPlayer" to="." method="_on_hourglass_animation_finished"]
+[connection signal="animation_finished" from="Camera2D/HourglassBackground" to="." method="_on_hourglass_background_animation_finished"]
+[connection signal="animation_finished" from="Camera2D/Hourglass/AnimationPlayer" to="." method="_on_hourglass_animation_finished"]
