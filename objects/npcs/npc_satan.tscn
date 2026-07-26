@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://j2ffrxwfo4ip"]
+
+[ext_resource type="Script" uid="uid://ceoijo0rqfi4y" path="res://objects/npcs/npc_satan.gd" id="1_qp1nw"]
+[ext_resource type="Texture2D" uid="uid://giaok2w8qjju" path="res://assets/sprites/satan.png" id="2_qp1nw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1e3"]
+atlas = ExtResource("2_qp1nw")
+region = Rect2(34, 0, 34, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c21o0"]
+atlas = ExtResource("2_qp1nw")
+region = Rect2(0, 0, 34, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp1nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1e3")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c21o0")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnb75"]
+size = Vector2(39, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtvll"]
+size = Vector2(36, 47)
+
+[node name="npc_saturn" type="Node2D" unique_id=303595]
+script = ExtResource("1_qp1nw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1372402347]
+sprite_frames = SubResource("SpriteFrames_qp1nw")
+animation = &"idle"
+
+[node name="InteractableArea" type="Area2D" parent="." unique_id=2070287554]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=1810638566]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_bnb75")
+debug_color = Color(0.8100224, 4.813075e-08, 0.43864137, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1845349354]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_gtvll")
