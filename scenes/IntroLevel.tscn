@@ -43,4 +43,7 @@ shape = SubResource("RectangleShape2D_1pfvr")
 [node name="npc_saturn" parent="." unique_id=1815487601 instance=ExtResource("5_1bc3i")]
 position = Vector2(115, -190)
 
+[node name="TeleportPoint" type="Node2D" parent="." unique_id=808620771]
+position = Vector2(40, -176)
+
 [connection signal="body_exited" from="LevelBoundary" to="." method="_on_level_boundary_body_exited"]

@@ -24,9 +24,6 @@ tile_set = ExtResource("2_faad7")
 position = Vector2(16, -224)
 shape = SubResource("RectangleShape2D_1pfvr")
 
-[node name="TeleportPoint" type="Node2D" parent="." unique_id=938903356]
-position = Vector2(-56, -192)
-
 [node name="Soul" parent="." unique_id=1448507561 instance=ExtResource("3_7ye7i")]
 position = Vector2(0, -184)
 

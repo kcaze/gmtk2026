@@ -62,7 +62,7 @@ repeats = true
 [node name="AnimatableBody2D2" parent="Track2" unique_id=913576872 instance=ExtResource("5_746os")]
 
 [node name="TeleportPoint" type="Node2D" parent="." unique_id=2084095836]
-position = Vector2(8, -224)
+position = Vector2(-160, -144)
 
 [node name="Fan" parent="." unique_id=1520780726 instance=ExtResource("6_dlajr")]
 position = Vector2(72, 40)

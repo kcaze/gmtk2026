@@ -75,7 +75,4 @@ curve = SubResource("Curve2D_tumeu")
 [node name="npc_lucifer" parent="." unique_id=1815487601 instance=ExtResource("6_tumeu")]
 position = Vector2(-79, 193)
 
-[node name="TeleportPoint" type="Node2D" parent="." unique_id=780682888]
-position = Vector2(-136, 80)
-
 [connection signal="body_exited" from="LevelBoundary" to="." method="_on_level_boundary_body_exited"]

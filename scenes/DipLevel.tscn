@@ -41,7 +41,7 @@ position = Vector2(-160, -128)
 shape = SubResource("RectangleShape2D_ra66d")
 
 [node name="TeleportPoint" type="Node2D" parent="." unique_id=369003317]
-position = Vector2(24, -32)
+position = Vector2(-344, -24)
 
 [node name="Soul" parent="." unique_id=1448507561 instance=ExtResource("3_5jkph")]
 position = Vector2(8, -32)

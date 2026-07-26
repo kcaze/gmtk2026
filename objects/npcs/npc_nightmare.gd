@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	if active and player_entered and dialogue_can_play:
 		print("hi")
 		dialogue_can_play = false
-		G.ui.start_dialogue(DIALOGUE, 1, true)
+		G.ui.start_dialogue(DIALOGUE, 5, true)
 
 func activate():
 	active = true

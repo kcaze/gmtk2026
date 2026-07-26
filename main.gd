@@ -3,15 +3,14 @@ class_name Main
 extends Node2D
 
 @onready var current_level = $Levels/IntroLevel
-var teleports = []
-var teleport_idx = -1
+var teleports = {}
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	G.main = self
 	for level in $Levels.get_children():
 		if level.has_node("TeleportPoint"):
-			teleports.append(level.get_node("TeleportPoint"))
+			teleports[level] = level.get_node("TeleportPoint")
 	$Player/Camera2D.limit_left = current_level.bounds.position.x
 	$Player/Camera2D.limit_top = current_level.bounds.position.y
 	$Player/Camera2D.limit_right = current_level.bounds.end.x
@@ -19,8 +18,8 @@ func _ready():
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("teleport"):
-		teleport_idx = (teleport_idx+1)%len(teleports)
-		G.player.global_position = teleports[teleport_idx].global_position
+		if current_level in teleports:
+			G.player.global_position = teleports[current_level].global_position
 
 func exited_level():
 	for level in $Levels.get_children():
