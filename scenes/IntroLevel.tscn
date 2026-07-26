@@ -23,8 +23,8 @@ position = Vector2(32, 16)
 [node name="Soul2" parent="." unique_id=1509575015 instance=ExtResource("5_sh8fi")]
 position = Vector2(56, -176)
 
-[node name="Soul3" parent="." unique_id=370809757 instance=ExtResource("5_sh8fi")]
-position = Vector2(-48, -48)
+[node name="Soul4" parent="." unique_id=1278529540 instance=ExtResource("5_sh8fi")]
+position = Vector2(32, -80)
 
 [node name="Fan" parent="." unique_id=1520780726 instance=ExtResource("4_kbaks")]
 position = Vector2(72, 40)
