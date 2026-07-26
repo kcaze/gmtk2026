@@ -46,7 +46,7 @@ func _input(event):
 	if event.is_action_released("left"):
 		if Input.is_action_pressed("right"):
 			_velocity.x = MOVE_SPEED
-			apply_friction = false	
+			apply_friction = false
 
 func _process(delta):
 	if _velocity.x < 0:
@@ -68,6 +68,17 @@ func _process(delta):
 	hourglass_aura_time += delta
 	$HourglassEffect/Aura.visible = hourglass_active
 	($HourglassEffect/Aura.material as ShaderMaterial).set_shader_parameter("t", hourglass_aura_time)
+	
+	if not is_on_floor():
+		$PlayerSprite.frame = 0
+		$PlayerSprite.pause()
+	else:
+		if abs(_velocity.x) > 10:
+			$PlayerSprite.sprite_frames.set_animation_loop("default", true)
+			if not $PlayerSprite.is_playing():
+				$PlayerSprite.play()
+		else:
+			$PlayerSprite.sprite_frames.set_animation_loop("default", false)
 
 func _physics_process(delta):
 	# Physics
@@ -108,3 +119,7 @@ func flip_hourglass():
 
 func _on_hourglass_background_animation_finished() -> void:
 	hourglass_active = false
+
+
+func _on_player_sprite_animation_finished() -> void:
+	$PlayerSprite.frame = 0
