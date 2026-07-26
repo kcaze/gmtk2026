@@ -59,7 +59,9 @@ func _process(delta):
 	var effect_pos = get_global_mouse_position() - global_position
 	effect_pos = effect_pos.normalized() * min(effect_pos.length(), MAX_HOURGLASS_DIST)
 	$HourglassEffect.global_position = global_position + effect_pos
-	$HourglassEffect.visible = hourglass_active
+	$HourglassEffect.animation = "on" if hourglass_active else "off"
+	$HourglassEffect.modulate.a = 0.8 if hourglass_active else 0.25
+	$HourglassEffect/HourglassBackground.visible = hourglass_active
 
 func _physics_process(delta):
 	# Physics
@@ -89,15 +91,15 @@ func _on_hourglass_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "flip":
 		$Camera2D/Hourglass.rotation_degrees = 0
 		if hourglass_active:
-			$Camera2D/HourglassBackground.play()
+			$HourglassEffect/HourglassBackground.play()
 	
 
 func flip_hourglass():
 	num_flips -= 1
 	hourglass_active = not hourglass_active
 	$Camera2D/Hourglass/AnimationPlayer.play("flip")
-	$Camera2D/HourglassBackground.frame = 0
-	$Camera2D/HourglassBackground.pause()
+	$HourglassEffect/HourglassBackground.frame = 0
+	$HourglassEffect/HourglassBackground.pause()
 
 func _on_hourglass_background_animation_finished() -> void:
 	hourglass_active = false

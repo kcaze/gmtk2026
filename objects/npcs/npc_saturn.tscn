@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b00361t70sjte"]
+
+[ext_resource type="Texture2D" uid="uid://c2y657hu11stw" path="res://assets/sprites/npc_saturn.png" id="1_6rvfj"]
+[ext_resource type="Script" uid="uid://khpp01r7hep5" path="res://objects/npcs/npc_saturn.gd" id="1_uddtt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uddtt"]
+atlas = ExtResource("1_6rvfj")
+region = Rect2(40, 0, 40, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ktba"]
+atlas = ExtResource("1_6rvfj")
+region = Rect2(0, 0, 40, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rvfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uddtt")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ktba")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
+size = Vector2(45, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnb75"]
+size = Vector2(55, 65)
+
+[node name="npc_saturn" type="StaticBody2D" unique_id=1815487601]
+script = ExtResource("1_uddtt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1372402347]
+sprite_frames = SubResource("SpriteFrames_6rvfj")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=10991132]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_1pfvr")
+
+[node name="InteractableArea" type="Area2D" parent="." unique_id=2070287554]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=1810638566]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_bnb75")
+debug_color = Color(0.8100224, 4.813075e-08, 0.43864137, 0.41960785)

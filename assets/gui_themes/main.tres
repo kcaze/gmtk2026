@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://cygf5vqdvskhu"]
+
+[ext_resource type="FontFile" uid="uid://dqmlreb3baa47" path="res://assets/fonts/dungeon-mode.ttf" id="1_37tv4"]
+
+[resource]
+default_font = ExtResource("1_37tv4")

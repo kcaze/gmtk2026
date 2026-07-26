@@ -32,6 +32,13 @@ window/stretch/scale_mode="integer"
 import/snap/snap_2d_vertices_to_pixel=true
 import/snap/snap_2d_transforms_to_pixel=true
 
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
+theme/custom="uid://cygf5vqdvskhu"
+
 [input]
 
 left={

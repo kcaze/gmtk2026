@@ -6,23 +6,101 @@
 [ext_resource type="PackedScene" uid="uid://cer15sainr8hb" path="res://scenes/IntroLevel.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ddfvwduvewucl" path="res://scenes/TestLevel.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bky4ugr712iem" path="res://scenes/LeftLevel.tscn" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://cssrtubotbtw1" path="res://objects/ui.gd" id="7_85g3d"]
+[ext_resource type="Texture2D" uid="uid://b3pmqvrjf3uk3" path="res://assets/sprites/dialogue_box.png" id="7_o6xl0"]
 
-[node name="Main" type="Node2D" unique_id=1580607753]
-position = Vector2(32, 32)
+[sub_resource type="Animation" id="Animation_tipki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_85g3d"]
+resource_name = "next"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_choun"]
+_data = {
+&"RESET": SubResource("Animation_tipki"),
+&"next": SubResource("Animation_85g3d")
+}
+
+[node name="Root" type="Node2D" unique_id=1580607753]
+
+[node name="Main" type="Node2D" parent="." unique_id=2112081665]
 script = ExtResource("1_tefeu")
 
-[node name="Player" parent="." unique_id=1918047500 instance=ExtResource("1_o5qli")]
-position = Vector2(-96, 16)
+[node name="Player" parent="Main" unique_id=1918047500 instance=ExtResource("1_o5qli")]
+position = Vector2(96, 224)
 
-[node name="Levels" type="Node2D" parent="." unique_id=107437446]
+[node name="Levels" type="Node2D" parent="Main" unique_id=107437446]
+position = Vector2(32, 32)
 
-[node name="Level" parent="Levels" unique_id=575520408 instance=ExtResource("3_jyhfs")]
-position = Vector2(336, 0)
+[node name="Level" parent="Main/Levels" unique_id=575520408 instance=ExtResource("3_jyhfs")]
+position = Vector2(624, 16)
 
-[node name="IntroLevel" parent="Levels" unique_id=1809290379 instance=ExtResource("3_sugp2")]
+[node name="IntroLevel" parent="Main/Levels" unique_id=1809290379 instance=ExtResource("3_sugp2")]
 
-[node name="Test" parent="Levels" unique_id=504866152 instance=ExtResource("5_tbgi4")]
+[node name="Test" parent="Main/Levels" unique_id=504866152 instance=ExtResource("5_tbgi4")]
 position = Vector2(624, -208)
 
-[node name="LeftLevel" parent="Levels" unique_id=2137821771 instance=ExtResource("6_tefeu")]
-position = Vector2(-256, 0)
+[node name="LeftLevel" parent="Main/Levels" unique_id=2137821771 instance=ExtResource("6_tefeu")]
+position = Vector2(-352, 0)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1536155419]
+script = ExtResource("7_85g3d")
+
+[node name="DialogueBox" type="TextureRect" parent="UI" unique_id=981546245]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_o6xl0")
+
+[node name="DialogueLabel" type="RichTextLabel" parent="UI/DialogueBox" unique_id=651190977]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 304.0
+offset_bottom = 34.0
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+bbcode_enabled = true
+text = "Saturn: Hello
+test"
+
+[node name="DialogueCountdown" type="Label" parent="UI/DialogueBox" unique_id=1643992118]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 25.0
+offset_right = 315.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 10
+text = "5"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/DialogueBox/DialogueCountdown" unique_id=1762784507]
+libraries/ = SubResource("AnimationLibrary_choun")
+autoplay = &"next"
