@@ -7,7 +7,7 @@ const RESPAWN_TIME = 0.5
 func _process(delta: float) -> void:
 	if player_colliding and is_active:
 		_add_flip()
-	if not is_active and G.player.num_flips == 0 and not G.player.hourglass_active:
+	if not is_active and G.player.num_flips == 0 and not G.player.hourglass_active and $RespawnTimer.is_stopped():
 		$RespawnTimer.start(RESPAWN_TIME)
 
 
@@ -29,3 +29,4 @@ func _add_flip():
 func _on_respawn_timer_timeout() -> void:
 	is_active = true
 	animation = "active"
+	$RespawnTimer.stop()
