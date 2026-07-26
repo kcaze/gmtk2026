@@ -12,6 +12,10 @@ func _ready():
 	for level in $Levels.get_children():
 		if level.has_node("TeleportPoint"):
 			teleports.append(level.get_node("TeleportPoint"))
+	$Player/Camera2D.limit_left = current_level.bounds.position.x
+	$Player/Camera2D.limit_top = current_level.bounds.position.y
+	$Player/Camera2D.limit_right = current_level.bounds.end.x
+	$Player/Camera2D.limit_bottom = current_level.bounds.end.y
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("teleport"):
