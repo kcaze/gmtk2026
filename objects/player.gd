@@ -22,6 +22,7 @@ var num_flips = 0
 const HOURGLASS_RADIUS = 16
 const MAX_HOURGLASS_DIST = 512
 var hourglass_active = false
+var hourglass_aura_time = 0.0
 
 const TEX_HOURGLASS_INDICATOR_ON = preload("res://assets/sprites/hourglass-indicator-on.png")
 const TEX_HOURGLASS_INDICATOR_OFF = preload("res://assets/sprites/hourglass-indicator-off.png")
@@ -68,6 +69,9 @@ func _process(delta):
 	$HourglassEffect.animation = "on" if hourglass_active else "off"
 	$HourglassEffect.modulate.a = 0.8 if hourglass_active else 0.25
 	$HourglassEffect/HourglassBackground.visible = hourglass_active
+	hourglass_aura_time += delta
+	$HourglassEffect/Aura.visible = hourglass_active
+	($HourglassEffect/Aura.material as ShaderMaterial).set_shader_parameter("t", hourglass_aura_time)
 
 func _physics_process(delta):
 	# Physics

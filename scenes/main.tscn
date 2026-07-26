@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://cssrtubotbtw1" path="res://objects/ui.gd" id="7_85g3d"]
 [ext_resource type="PackedScene" uid="uid://j0fcicwyioy4" path="res://scenes/BoneLevel1.tscn" id="7_choun"]
 [ext_resource type="Texture2D" uid="uid://b3pmqvrjf3uk3" path="res://assets/sprites/dialogue_box.png" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bktad1hetrciy" path="res://scenes/DipLevel.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://dwh2bq5cpumlr" path="res://scenes/BoneLevel2.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://l5n65vwwe8fp" path="res://scenes/DipBelowLevel.tscn" id="10_eb6dy"]
 
 [sub_resource type="Animation" id="Animation_tipki"]
 length = 0.001
@@ -58,6 +61,12 @@ position = Vector2(96, 224)
 [node name="Levels" type="Node2D" parent="Main" unique_id=107437446]
 position = Vector2(32, 32)
 
+[node name="DipBelowLevel" parent="Main/Levels" unique_id=684539520 instance=ExtResource("10_eb6dy")]
+position = Vector2(-832, -416)
+
+[node name="DipLevel" parent="Main/Levels" unique_id=1107968005 instance=ExtResource("9_ya4ey")]
+position = Vector2(-864, -528)
+
 [node name="Level" parent="Main/Levels" unique_id=575520408 instance=ExtResource("3_jyhfs")]
 position = Vector2(624, 16)
 
@@ -71,6 +80,9 @@ position = Vector2(-176, 192)
 
 [node name="BoneLevel1" parent="Main/Levels" unique_id=150059804 instance=ExtResource("7_choun")]
 position = Vector2(144, -112)
+
+[node name="BoneLevel2" parent="Main/Levels" unique_id=1824802859 instance=ExtResource("10_choun")]
+position = Vector2(-496, -352)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1536155419]
 script = ExtResource("7_85g3d")

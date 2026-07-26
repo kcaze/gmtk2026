@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		if active:
 			velocity = Vector2(direction*SPEED, 0)
 		var collision = move_and_collide(velocity*delta)
-		if collision and collision.get_collider() != G.player:
+		if collision and (collision.get_collider() != G.player or collision.get_travel().y < 0):
 			reset()
 
 func reset():

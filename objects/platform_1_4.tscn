@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ut7dx4aykddk"]
+
+[ext_resource type="Script" uid="uid://b83xxd0rj7hvy" path="res://objects/moving_platform.gd" id="1_ku0kr"]
+[ext_resource type="Shader" uid="uid://dkw2rdyq2j01v" path="res://shaders/saturation.gdshader" id="2_hvg03"]
+[ext_resource type="Texture2D" uid="uid://dqxqh6q3f6ld7" path="res://assets/sprites/platforms_1_4.png" id="3_ku0kr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyhfs"]
+shader = ExtResource("2_hvg03")
+shader_parameter/saturation = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvg03"]
+atlas = ExtResource("3_ku0kr")
+region = Rect2(64, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crb5x"]
+atlas = ExtResource("3_ku0kr")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_va6fg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvg03")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crb5x")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
+size = Vector2(64, 16)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=913576872]
+script = ExtResource("1_ku0kr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=730907703]
+material = SubResource("ShaderMaterial_jyhfs")
+sprite_frames = SubResource("SpriteFrames_va6fg")
+animation = &"idle"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1546464112]
+shape = SubResource("RectangleShape2D_1pfvr")
+metadata/_edit_lock_ = true

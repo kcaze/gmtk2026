@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dymfnlcnt032v" path="res://assets/sprites/centipede.png" id="2_exspy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ubsi"]
-size = Vector2(30, 11)
+size = Vector2(30, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxsf6"]
 atlas = ExtResource("2_exspy")
@@ -126,7 +126,7 @@ _data = {
 script = ExtResource("1_exspy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599983830]
-position = Vector2(1, -0.5)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_4ubsi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=971137633]
