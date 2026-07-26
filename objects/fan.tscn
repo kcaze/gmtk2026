@@ -72,6 +72,7 @@ sprite_frames = SubResource("SpriteFrames_7r5dd")
 animation = &"idle"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=877265469]
+emitting = false
 amount = 32
 lifetime = 1.71
 emission_shape = 3

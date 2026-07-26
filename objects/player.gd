@@ -20,7 +20,7 @@ var in_fans = {}
 # Hourglass logic
 var num_flips = 0
 const HOURGLASS_RADIUS = 16
-const MAX_HOURGLASS_DIST = 32
+const MAX_HOURGLASS_DIST = 512
 var hourglass_active = false
 
 const TEX_HOURGLASS_INDICATOR_ON = preload("res://assets/sprites/hourglass-indicator-on.png")

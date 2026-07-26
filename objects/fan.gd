@@ -40,7 +40,11 @@ func is_activated():
 func _on_body_entered(body: Node2D) -> void:
 	if body == G.player:
 		player_in_fan = true
+	if body is Centipede:
+		body.in_fan = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body == G.player:
 		player_in_fan = false
+	if body is Centipede:
+		body.in_fan = false

@@ -1,3 +1,4 @@
+class_name Centipede
 extends AnimatableBody2D
 
 var started = false
@@ -6,9 +7,11 @@ var spawn_position = Vector2(0,0)
 var active = false
 var velocity = Vector2(0,0)
 var direction = 1
+var in_fan = false
 
 const SPEED = 50.0
 const GRAVITY = 200.0
+const FAN_STRENGTH = 300.0
 
 func _ready():
 	spawn_position = global_position
@@ -17,12 +20,14 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if started:
-		if not active:
+		if not active and not in_fan:
 			velocity += Vector2(0, delta*GRAVITY)
+		if in_fan:
+			velocity -= Vector2(0, delta*FAN_STRENGTH)
 		if active:
 			velocity = Vector2(direction*SPEED, 0)
 		var collision = move_and_collide(velocity*delta)
-		if collision:
+		if collision and collision.get_collider() != G.player:
 			reset()
 
 func reset():

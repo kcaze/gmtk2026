@@ -50,3 +50,5 @@ position = Vector2(-104, 40)
 
 [node name="Fan2" parent="." unique_id=359902899 instance=ExtResource("6_5qu1l")]
 position = Vector2(-152, -8)
+
+[connection signal="body_exited" from="LevelBoundary" to="." method="_on_level_boundary_body_exited"]
