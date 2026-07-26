@@ -4,6 +4,7 @@ var DIALOGUE = [
 	"SATURN:[color=#939090] No... time... must...\ndevour...[/color]",
 	"[color=#939090]How... to.... escape... this...\nnightmare...?[/color]",
 	"[color=#939090]Night... mare...[/color]",
+	"[color=#996262]*The hourglass is enhanced*[/color]"
 ]
 var player_entered = false
 var active = false
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 	if active and player_entered and dialogue_can_play:
 		print("hi")
 		dialogue_can_play = false
+		G.player.upgrades += 1
 		G.ui.start_dialogue(DIALOGUE, 3)
 
 func activate():

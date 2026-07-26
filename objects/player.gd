@@ -5,6 +5,7 @@ var can_jump = 0.0
 var jump_buffer = 0.0
 var current_global_position = global_position
 var apply_friction = true
+var upgrades = 0
 
 const GRAVITY = 400.0
 const FAN_STRENGTH = 420.0
@@ -18,7 +19,6 @@ const LAND_SQUASH = Vector2(1.3, 0.7)
 var in_fans = {}
 
 # Hourglass logic
-var num_flips = 0
 const HOURGLASS_RADIUS = 16
 const MAX_HOURGLASS_DIST = 512
 var hourglass_active = false
@@ -46,17 +46,13 @@ func _input(event):
 	if event.is_action_released("left"):
 		if Input.is_action_pressed("right"):
 			_velocity.x = MOVE_SPEED
-			apply_friction = false
-	if event.is_action_pressed("flip") and num_flips > 0:
-		flip_hourglass()
-	
+			apply_friction = false	
 
 func _process(delta):
 	if _velocity.x < 0:
 		$PlayerSprite.flip_h = true
 	if _velocity.x > 0:
 		$PlayerSprite.flip_h = false
-	$HourglassIndicator.visible = num_flips > 0
 	var effect_pos = get_global_mouse_position()
 	
 	# Clamp to visible screen rect
@@ -101,12 +97,11 @@ func _on_hourglass_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "flip":
 		$Camera2D/Hourglass.rotation_degrees = 0
 		if hourglass_active:
-			$HourglassEffect/HourglassBackground.play()
+			$HourglassEffect/HourglassBackground.play(str(upgrades))
 	
 
 func flip_hourglass():
-	num_flips -= 1
-	hourglass_active = not hourglass_active
+	hourglass_active = true
 	$Camera2D/Hourglass/AnimationPlayer.play("flip")
 	$HourglassEffect/HourglassBackground.frame = 0
 	$HourglassEffect/HourglassBackground.pause()
