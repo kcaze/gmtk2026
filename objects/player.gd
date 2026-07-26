@@ -7,7 +7,7 @@ var current_global_position = global_position
 var apply_friction = true
 
 const GRAVITY = 400.0
-const FAN_STRENGTH = 600.0
+const FAN_STRENGTH = 420.0
 const MAX_LIFT_SPEED = -300.0
 const MAX_FALL_SPEED = 300.0
 const FRICTION = 0.5
@@ -56,9 +56,15 @@ func _process(delta):
 	if _velocity.x > 0:
 		$PlayerSprite.flip_h = false
 	$HourglassIndicator.visible = num_flips > 0
-	var effect_pos = get_global_mouse_position() - global_position
-	effect_pos = effect_pos.normalized() * min(effect_pos.length(), MAX_HOURGLASS_DIST)
-	$HourglassEffect.global_position = global_position + effect_pos
+	var effect_pos = get_global_mouse_position()
+	
+	# Clamp to visible screen rect
+	var viewport = get_viewport()
+	var rect = viewport.canvas_transform.affine_inverse() * viewport.get_visible_rect()
+	effect_pos.x = clampf(effect_pos.x, rect.position.x, rect.end.x)
+	effect_pos.y = clampf(effect_pos.y, rect.position.y, rect.end.y)
+	
+	$HourglassEffect.global_position = effect_pos
 	$HourglassEffect.animation = "on" if hourglass_active else "off"
 	$HourglassEffect.modulate.a = 0.8 if hourglass_active else 0.25
 	$HourglassEffect/HourglassBackground.visible = hourglass_active

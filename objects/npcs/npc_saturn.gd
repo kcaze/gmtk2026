@@ -3,7 +3,7 @@ extends StaticBody2D
 var DIALOGUE = [
 	"SATURN:[color=#939090] No... time... must...\ndevour...[/color]",
 	"[color=#939090]How... to.... escape... this...\nnightmare...?[/color]",
-	"[color=#939090]Night... mare...[/color]"
+	"[color=#939090]Night... mare...[/color]",
 ]
 var player_entered = false
 var active = false

@@ -3,10 +3,20 @@ class_name Main
 extends Node2D
 
 @onready var current_level = $Levels/IntroLevel
+var teleports = []
+var teleport_idx = -1
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	G.main = self
+	for level in $Levels.get_children():
+		if level.has_node("TeleportPoint"):
+			teleports.append(level.get_node("TeleportPoint"))
+
+func _input(event: InputEvent):
+	if event.is_action_pressed("teleport"):
+		teleport_idx = (teleport_idx+1)%len(teleports)
+		G.player.global_position = teleports[teleport_idx].global_position
 
 func exited_level():
 	for level in $Levels.get_children():

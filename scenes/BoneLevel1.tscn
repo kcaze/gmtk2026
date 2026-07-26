@@ -1,0 +1,62 @@
+[gd_scene format=4 uid="uid://j0fcicwyioy4"]
+
+[ext_resource type="Script" uid="uid://db4jkwulwv3y8" path="res://objects/level.gd" id="1_4w5wr"]
+[ext_resource type="TileSet" uid="uid://vudl0q81p0y8" path="res://assets/tilesets/main_tileset.tres" id="2_ra66d"]
+[ext_resource type="PackedScene" uid="uid://da5r34colqahc" path="res://objects/soul.tscn" id="3_5436t"]
+[ext_resource type="PackedScene" uid="uid://dj43pgk0bolc4" path="res://objects/fan.tscn" id="4_1p77a"]
+[ext_resource type="PackedScene" uid="uid://dpc2j7332xwp3" path="res://objects/platform_1_2.tscn" id="4_ra66d"]
+[ext_resource type="PackedScene" uid="uid://0gvlnl4wwaf1" path="res://objects/track.tscn" id="5_5436t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra66d"]
+size = Vector2(256, 308.5)
+
+[sub_resource type="Curve2D" id="Curve2D_ra66d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64)
+}
+point_count = 2
+
+[node name="Level" type="Node2D" unique_id=575520408]
+position = Vector2(144, 176)
+script = ExtResource("1_4w5wr")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1960307424]
+tile_map_data = PackedByteArray("AAD3//X/AQABAAMAAAD3//b/AQAAAAIAAAD3//3/AQABAAMAAAD3//7/AQAAAAIAAAD4//3/AQADAAAAAAD4//7/AQABAAIAAAD5//3/AQADAAAAAAD5//7/AQABAAIAAAD6//3/AQADAAAAAAD6//7/AQABAAIAAAD7//3/AQADAAAAAAD7//7/AQABAAIAAAD8//3/AQADAAAAAAD8//7/AQABAAIAAAABAP7/AQABAAIAAAAAAP7/AQABAAIAAAD///7/AQABAAIAAAD///3/AQADAAAAAAD+//7/AQABAAIAAAD+//3/AQADAAAAAAD9//7/AQABAAIAAAD9//3/AQADAAAAAAAKAP7/AQADAAMAAAAKAP3/AQAAAAAAAAAJAP7/AQABAAIAAAAJAP3/AQADAAAAAAAIAP7/AQABAAIAAAAIAP3/AQADAAAAAAAHAP7/AQABAAIAAAAHAP3/AQADAAAAAAAGAP7/AQABAAIAAAAGAP3/AQADAAAAAAAFAP7/AQABAAIAAAAFAP3/AQADAAAAAAAEAP7/AQAAAAIAAAAEAP3/AQABAAMAAAADAP7/AQAAAAIAAAACAP7/AQABAAIAAAD///f/AQABAAIAAAD///b/AQADAAAAAAAAAP3/AQADAAAAAAACAP3/AQAAAAAAAAABAP3/AQADAAAAAAABAPf/AQADAAMAAAABAPb/AQAAAAAAAAAAAPf/AQABAAIAAAAAAPb/AQADAAAAAAD6//f/AQADAAMAAAD5//f/AQAAAAIAAAA=")
+tile_set = ExtResource("2_ra66d")
+
+[node name="Soul" parent="." unique_id=1448507561 instance=ExtResource("3_5436t")]
+position = Vector2(-80, -72)
+
+[node name="Soul2" parent="." unique_id=1843409153 instance=ExtResource("3_5436t")]
+position = Vector2(128, -128)
+
+[node name="Exits" type="Node2D" parent="." unique_id=855449208]
+
+[node name="LevelBoundary" type="Area2D" parent="." unique_id=1533346658]
+
+[node name="Shape2D" type="CollisionShape2D" parent="LevelBoundary" unique_id=577847270]
+position = Vector2(-16, -165.75)
+shape = SubResource("RectangleShape2D_ra66d")
+
+[node name="Track2" parent="." unique_id=1100748682 instance=ExtResource("5_5436t")]
+position = Vector2(-64, -280)
+
+[node name="AnimatableBody2D2" parent="Track2" unique_id=913576872 instance=ExtResource("4_ra66d")]
+
+[node name="Track" parent="." unique_id=223444795 instance=ExtResource("5_5436t")]
+position = Vector2(-40, -64)
+curve = SubResource("Curve2D_ra66d")
+
+[node name="AnimatableBody2D" parent="Track" unique_id=1980217301 instance=ExtResource("4_ra66d")]
+rotation = 1.5707964
+
+[node name="TeleportPoint" type="Node2D" parent="." unique_id=2084095836]
+position = Vector2(-112, -72)
+
+[node name="Fan" parent="." unique_id=1520780726 instance=ExtResource("4_1p77a")]
+position = Vector2(56, -40)
+
+[node name="Fan2" parent="." unique_id=1740106061 instance=ExtResource("4_1p77a")]
+position = Vector2(-120, -136)
+
+[connection signal="body_exited" from="LevelBoundary" to="." method="_on_level_boundary_body_exited"]

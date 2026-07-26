@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ddfvwduvewucl" path="res://scenes/TestLevel.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bky4ugr712iem" path="res://scenes/LeftLevel.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://cssrtubotbtw1" path="res://objects/ui.gd" id="7_85g3d"]
+[ext_resource type="PackedScene" uid="uid://j0fcicwyioy4" path="res://scenes/BoneLevel1.tscn" id="7_choun"]
 [ext_resource type="Texture2D" uid="uid://b3pmqvrjf3uk3" path="res://assets/sprites/dialogue_box.png" id="7_o6xl0"]
 
 [sub_resource type="Animation" id="Animation_tipki"]
@@ -66,7 +67,10 @@ position = Vector2(624, 16)
 position = Vector2(624, -208)
 
 [node name="LeftLevel" parent="Main/Levels" unique_id=2137821771 instance=ExtResource("6_tefeu")]
-position = Vector2(-352, 0)
+position = Vector2(-176, 192)
+
+[node name="BoneLevel1" parent="Main/Levels" unique_id=150059804 instance=ExtResource("7_choun")]
+position = Vector2(144, -112)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1536155419]
 script = ExtResource("7_85g3d")
