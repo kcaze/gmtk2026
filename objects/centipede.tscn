@@ -123,6 +123,7 @@ _data = {
 }
 
 [node name="Centipede" type="AnimatableBody2D" unique_id=901370044]
+sync_to_physics = false
 script = ExtResource("1_exspy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599983830]

@@ -1,0 +1,77 @@
+[gd_scene format=4 uid="uid://dcpchibg0l736"]
+
+[ext_resource type="Script" uid="uid://db4jkwulwv3y8" path="res://objects/level.gd" id="1_vmrwc"]
+[ext_resource type="TileSet" uid="uid://vudl0q81p0y8" path="res://assets/tilesets/main_tileset.tres" id="2_mei1o"]
+[ext_resource type="PackedScene" uid="uid://da5r34colqahc" path="res://objects/soul.tscn" id="3_1ppc5"]
+[ext_resource type="PackedScene" uid="uid://dj43pgk0bolc4" path="res://objects/fan.tscn" id="4_ji6ub"]
+[ext_resource type="PackedScene" uid="uid://0gvlnl4wwaf1" path="res://objects/track.tscn" id="5_q0j1x"]
+[ext_resource type="PackedScene" uid="uid://dpc2j7332xwp3" path="res://objects/platform_1_2.tscn" id="6_n0iek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trceg"]
+size = Vector2(336, 320)
+
+[sub_resource type="Curve2D" id="Curve2D_tumeu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0)
+}
+point_count = 2
+
+[node name="Level" type="Node2D" unique_id=575520408]
+position = Vector2(144, 176)
+script = ExtResource("1_vmrwc")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1960307424]
+tile_map_data = PackedByteArray("AAD+//3/AQADAAAAAAD///3/AQAAAAAAAAD+//7/AQABAAIAAAD///7/AQADAAMAAAAAAAAAAQABAAMAAAABAP//AQABAAMAAAABAAAAAQACAAEAAAACAP//AQADAAAAAAACAAAAAQACAAEAAAADAP//AQAAAAAAAAADAAAAAQACAAEAAAAEAAAAAQACAAEAAAAFAP3/AQABAAMAAAAFAP7/AQABAAAAAAAFAP//AQABAAAAAAAFAAAAAQACAAEAAAAGAP3/AQADAAAAAAAGAP7/AQACAAEAAAAGAP//AQACAAEAAAAGAAAAAQACAAEAAAD9//7/AQABAAIAAAD8//7/AQABAAIAAAD7//7/AQABAAIAAAD6//7/AQABAAIAAAD5//7/AQABAAIAAAD4//7/AQABAAIAAAD3//7/AQABAAIAAAD2//7/AQABAAIAAAD1//7/AQABAAIAAAD0//7/AQAAAAIAAAD9//3/AQADAAAAAAD8//3/AQADAAAAAAD7//3/AQADAAAAAAD6//3/AQADAAAAAAD5//3/AQADAAAAAAD4//3/AQADAAAAAAD3//3/AQADAAAAAAD2//3/AQADAAAAAAD1//3/AQADAAAAAAD0//3/AQABAAMAAAAIAAUAAQADAAMAAAAIAAQAAQADAAIAAAAIAAMAAQADAAIAAAAIAAIAAQADAAIAAAAIAAEAAQADAAIAAAAIAAAAAQADAAIAAAAIAP//AQADAAIAAAAIAP7/AQADAAIAAAAIAP3/AQAAAAAAAAAHAAUAAQABAAIAAAAHAAQAAQACAAEAAAAHAAMAAQACAAEAAAAHAAIAAQACAAEAAAAHAAEAAQACAAEAAAAHAAAAAQACAAEAAAAHAP//AQACAAEAAAAHAP7/AQACAAEAAAAHAP3/AQADAAAAAAAGAAUAAQABAAIAAAAGAAQAAQACAAEAAAAGAAMAAQACAAEAAAAGAAIAAQACAAEAAAAGAAEAAQACAAEAAAAFAAUAAQABAAIAAAAFAAQAAQACAAEAAAAFAAMAAQACAAEAAAAFAAIAAQACAAEAAAAFAAEAAQACAAEAAAAEAAUAAQABAAIAAAAEAAQAAQACAAEAAAAEAAMAAQACAAEAAAAEAAIAAQACAAEAAAAEAAEAAQACAAEAAAADAAUAAQABAAIAAAADAAQAAQACAAEAAAADAAMAAQACAAEAAAADAAIAAQACAAEAAAADAAEAAQACAAEAAAACAAUAAQABAAIAAAACAAQAAQACAAEAAAACAAMAAQACAAEAAAACAAIAAQACAAEAAAACAAEAAQACAAEAAAABAAUAAQABAAIAAAABAAQAAQACAAEAAAABAAMAAQACAAEAAAABAAIAAQACAAEAAAABAAEAAQACAAEAAAAAAAUAAQAAAAIAAAAAAAQAAQABAAAAAAAAAAMAAQABAAAAAAAAAAIAAQABAAAAAAAAAAEAAQABAAAAAAD1/w0AAQADAAAAAAD0/w0AAQABAAMAAAD0/wwAAQABAAAAAAD0/wsAAQABAAAAAAD0/woAAQABAAAAAAD0/wkAAQABAAAAAAD0/wgAAQABAAAAAAD0/wcAAQABAAAAAAD0/wYAAQABAAMAAAD4/w0AAQADAAAAAAD3/w0AAQADAAAAAAD2/w0AAQADAAAAAAD7/w0AAQADAAAAAAD6/w0AAQADAAAAAAD5/w0AAQADAAAAAAD7/w4AAQABAAIAAAD6/w4AAQABAAIAAAD5/w4AAQABAAIAAAD4/w4AAQABAAIAAAD3/w4AAQABAAIAAAD2/w4AAQABAAIAAAD1/w4AAQABAAIAAAD0/w4AAQAAAAIAAAD8/w4AAQADAAMAAAD8/w0AAQAAAAAAAAD0/wIAAQABAAMAAAD6/wQAAQADAAMAAAD6/wMAAQADAAIAAAD5/wQAAQABAAIAAAD5/wMAAQACAAEAAAD4/wQAAQABAAIAAAD4/wMAAQACAAEAAAD3/wQAAQABAAIAAAD3/wMAAQACAAEAAAD2/wQAAQABAAIAAAD2/wMAAQACAAEAAAD1/wQAAQABAAIAAAD1/wMAAQACAAEAAAD0/wQAAQAAAAIAAAD0/wMAAQABAAAAAAD5/wIAAQADAAAAAAD4/wIAAQADAAAAAAD3/wIAAQADAAAAAAD2/wIAAQADAAAAAAD1/wIAAQADAAAAAAD6/wIAAQAAAAAAAAA=")
+tile_set = ExtResource("2_mei1o")
+
+[node name="Soul" parent="." unique_id=1448507561 instance=ExtResource("3_1ppc5")]
+position = Vector2(40, -32)
+
+[node name="Soul2" parent="." unique_id=530680015 instance=ExtResource("3_1ppc5")]
+position = Vector2(-64, 80)
+
+[node name="Soul3" parent="." unique_id=1168362317 instance=ExtResource("3_1ppc5")]
+position = Vector2(-16, 128)
+
+[node name="Soul4" parent="." unique_id=792318700 instance=ExtResource("3_1ppc5")]
+position = Vector2(16, 176)
+
+[node name="Soul5" parent="." unique_id=1406727085 instance=ExtResource("3_1ppc5")]
+position = Vector2(-32, 224)
+
+[node name="Exits" type="Node2D" parent="." unique_id=855449208]
+
+[node name="LevelBoundary" type="Area2D" parent="." unique_id=1533346658]
+
+[node name="Shape2D" type="CollisionShape2D" parent="LevelBoundary" unique_id=577847270]
+position = Vector2(-24, 112)
+shape = SubResource("RectangleShape2D_trceg")
+
+[node name="Fan" parent="." unique_id=1520780726 instance=ExtResource("4_ji6ub")]
+position = Vector2(8, -8)
+
+[node name="Fan2" parent="." unique_id=1740106061 instance=ExtResource("4_ji6ub")]
+position = Vector2(72, -8)
+
+[node name="Track" parent="." unique_id=1100748682 instance=ExtResource("5_q0j1x")]
+position = Vector2(-16, 104)
+curve = SubResource("Curve2D_tumeu")
+
+[node name="AnimatableBody2D" parent="Track" unique_id=913576872 instance=ExtResource("6_n0iek")]
+
+[node name="Track2" parent="." unique_id=1575013838 instance=ExtResource("5_q0j1x")]
+position = Vector2(16, 152)
+curve = SubResource("Curve2D_tumeu")
+
+[node name="AnimatableBody2D" parent="Track2" unique_id=1165478302 instance=ExtResource("6_n0iek")]
+
+[node name="Track3" parent="." unique_id=195833633 instance=ExtResource("5_q0j1x")]
+position = Vector2(48, 200)
+curve = SubResource("Curve2D_tumeu")
+
+[node name="AnimatableBody2D" parent="Track3" unique_id=969925763 instance=ExtResource("6_n0iek")]
+
+[node name="TeleportPoint" type="Node2D" parent="." unique_id=780682888]
+position = Vector2(-136, 80)
+
+[connection signal="body_exited" from="LevelBoundary" to="." method="_on_level_boundary_body_exited"]

@@ -2,9 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ddv4hkfostad5" path="res://objects/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://bs2qeucwtife5" path="res://main.gd" id="1_tefeu"]
-[ext_resource type="PackedScene" uid="uid://c2e6w5tmaadw" path="res://scenes/LockLevel.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cer15sainr8hb" path="res://scenes/IntroLevel.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://ddfvwduvewucl" path="res://scenes/TestLevel.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bky4ugr712iem" path="res://scenes/LeftLevel.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://cssrtubotbtw1" path="res://objects/ui.gd" id="7_85g3d"]
 [ext_resource type="PackedScene" uid="uid://j0fcicwyioy4" path="res://scenes/BoneLevel1.tscn" id="7_choun"]
@@ -12,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bktad1hetrciy" path="res://scenes/DipLevel.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dwh2bq5cpumlr" path="res://scenes/BoneLevel2.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://l5n65vwwe8fp" path="res://scenes/DipBelowLevel.tscn" id="10_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://dcpchibg0l736" path="res://scenes/final_level.tscn" id="10_trceg"]
+[ext_resource type="PackedScene" uid="uid://ccgboeiyly5e0" path="res://scenes/CentipedeFan.tscn" id="11_trceg"]
 
 [sub_resource type="Animation" id="Animation_tipki"]
 length = 0.001
@@ -61,19 +61,18 @@ position = Vector2(96, 224)
 [node name="Levels" type="Node2D" parent="Main" unique_id=107437446]
 position = Vector2(32, 32)
 
+[node name="FinalLevel" parent="Main/Levels" unique_id=575520408 instance=ExtResource("10_trceg")]
+
+[node name="CentipedeFan" parent="Main/Levels" unique_id=924572446 instance=ExtResource("11_trceg")]
+position = Vector2(-1168, -96)
+
 [node name="DipBelowLevel" parent="Main/Levels" unique_id=684539520 instance=ExtResource("10_eb6dy")]
 position = Vector2(-832, -416)
 
 [node name="DipLevel" parent="Main/Levels" unique_id=1107968005 instance=ExtResource("9_ya4ey")]
 position = Vector2(-864, -528)
 
-[node name="Level" parent="Main/Levels" unique_id=575520408 instance=ExtResource("3_jyhfs")]
-position = Vector2(624, 16)
-
 [node name="IntroLevel" parent="Main/Levels" unique_id=1809290379 instance=ExtResource("3_sugp2")]
-
-[node name="Test" parent="Main/Levels" unique_id=504866152 instance=ExtResource("5_tbgi4")]
-position = Vector2(624, -208)
 
 [node name="LeftLevel" parent="Main/Levels" unique_id=2137821771 instance=ExtResource("6_tefeu")]
 position = Vector2(-176, 192)

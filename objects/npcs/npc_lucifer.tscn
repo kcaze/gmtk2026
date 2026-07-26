@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dma8c11bhb2rj"]
+
+[ext_resource type="Script" uid="uid://d31ubtc50mjis" path="res://objects/npcs/npc_lucifer.gd" id="1_4h6uc"]
+[ext_resource type="Texture2D" uid="uid://3q6vi5sme1s" path="res://assets/sprites/lucifer.png" id="1_bukgi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h6uc"]
+atlas = ExtResource("1_bukgi")
+region = Rect2(60, 0, 60, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhye2"]
+atlas = ExtResource("1_bukgi")
+region = Rect2(0, 0, 60, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42kgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h6uc")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhye2")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
+size = Vector2(61, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnb75"]
+size = Vector2(95, 60)
+
+[node name="npc_lucifer" type="StaticBody2D" unique_id=1815487601]
+script = ExtResource("1_4h6uc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1372402347]
+sprite_frames = SubResource("SpriteFrames_42kgm")
+animation = &"active"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=10991132]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_1pfvr")
+
+[node name="InteractableArea" type="Area2D" parent="." unique_id=2070287554]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=1810638566]
+position = Vector2(14.5, 12)
+shape = SubResource("RectangleShape2D_bnb75")
+debug_color = Color(0.8100224, 4.813075e-08, 0.43864137, 0.41960785)

@@ -7,11 +7,11 @@ var spawn_position = Vector2(0,0)
 var active = false
 var velocity = Vector2(0,0)
 var direction = 1
-var in_fan = false
+var in_fan = {}
 
 const SPEED = 50.0
 const GRAVITY = 200.0
-const FAN_STRENGTH = 300.0
+const FAN_STRENGTH = 350.0
 
 func _ready():
 	spawn_position = global_position
@@ -19,15 +19,20 @@ func _ready():
 		direction = -1
 
 func _physics_process(delta: float) -> void:
+	var active_fans = []
+	for fan in in_fan.keys():
+		if fan.active_timer > 0.0:
+			active_fans.append(fan)
 	if started:
-		if not active and not in_fan:
+		if not active and len(active_fans) == 0:
 			velocity += Vector2(0, delta*GRAVITY)
-		if in_fan:
+		if len(active_fans) > 0:
 			velocity -= Vector2(0, delta*FAN_STRENGTH)
+			print(velocity)
 		if active:
-			velocity = Vector2(direction*SPEED, 0)
+			velocity.x = direction*SPEED
 		var collision = move_and_collide(velocity*delta)
-		if collision and (collision.get_collider() != G.player or collision.get_travel().y < 0):
+		if collision and (collision.get_collider() != G.player or velocity.y > 0):
 			reset()
 
 func reset():

@@ -50,10 +50,11 @@ func _on_body_entered(body: Node2D) -> void:
 	if body == G.player:
 		player_in_fan = true
 	if body is Centipede:
-		body.in_fan = true
+		body.in_fan[self] = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body == G.player:
 		player_in_fan = false
 	if body is Centipede:
-		body.in_fan = false
+		if self in body.in_fan:
+			body.in_fan.erase(self)
