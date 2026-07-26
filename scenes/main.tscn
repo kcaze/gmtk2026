@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dwh2bq5cpumlr" path="res://scenes/BoneLevel2.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://l5n65vwwe8fp" path="res://scenes/DipBelowLevel.tscn" id="10_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://dcpchibg0l736" path="res://scenes/final_level.tscn" id="10_trceg"]
+[ext_resource type="PackedScene" uid="uid://kn5rud0lpbqt" path="res://scenes/NightmareLevel.tscn" id="11_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://ccgboeiyly5e0" path="res://scenes/CentipedeFan.tscn" id="11_trceg"]
 
 [sub_resource type="Animation" id="Animation_tipki"]
@@ -60,6 +61,9 @@ position = Vector2(96, 224)
 
 [node name="Levels" type="Node2D" parent="Main" unique_id=107437446]
 position = Vector2(32, 32)
+
+[node name="NightmareLevel" parent="Main/Levels" unique_id=1656636779 instance=ExtResource("11_a8y0u")]
+position = Vector2(464, 336)
 
 [node name="FinalLevel" parent="Main/Levels" unique_id=575520408 instance=ExtResource("10_trceg")]
 position = Vector2(-496, -240)
@@ -120,3 +124,6 @@ text = "5"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/DialogueBox/DialogueCountdown" unique_id=1762784507]
 libraries/ = SubResource("AnimationLibrary_choun")
 autoplay = &"next"
+
+[editable path="Main/Levels/NightmareLevel"]
+[editable path="Main/Levels/NightmareLevel/npc_nightmare2"]

@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bggrvoel6le7e"]
+
+[ext_resource type="Script" uid="uid://df78vayri6nah" path="res://objects/npcs/npc_nightmare.gd" id="1_d7cy4"]
+[ext_resource type="Texture2D" uid="uid://by64v50s2kiyb" path="res://assets/sprites/nightmare.png" id="2_d7cy4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrrod"]
+atlas = ExtResource("2_d7cy4")
+region = Rect2(64, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v57k"]
+atlas = ExtResource("2_d7cy4")
+region = Rect2(0, 0, 64, 88)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7v57k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrrod")
+}],
+"loop": 1,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v57k")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pfvr"]
+size = Vector2(77, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnb75"]
+size = Vector2(99, 97)
+
+[sub_resource type="Animation" id="Animation_d7cy4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xrrod"]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0062741265, 0.1, 0.10627413, 0.2, 0.20627412, 0.3, 0.30627415, 0.4, 0.40627414, 0.5, 0.5062741, 0.6, 0.6062741, 0.70000005, 0.70627415, 0.8, 0.8062741, 0.90000004, 0.90627414, 1, 1.0062741, 1.1, 1.1062741, 1.2, 1.2062742, 1.3000001, 1.3062742, 1.4000001, 1.4062742, 1.5, 1.5062742, 1.6, 1.6062741, 1.7, 1.7062742, 1.8000001, 1.8062742, 1.9000001, 1.9062742),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-5, 0), Vector2(-2, 0), Vector2(0, 0), Vector2(0, 0), Vector2(2, 0), Vector2(5, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-5, 0), Vector2(-2, 0), Vector2(0, 0), Vector2(0, 0), Vector2(5, 0), Vector2(2, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-5, 0), Vector2(-2, 0), Vector2(0, 0), Vector2(0, 0), Vector2(5, 0), Vector2(2, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-2, 0), Vector2(-5, 0), Vector2(0, 0), Vector2(0, 0), Vector2(2, 0), Vector2(5, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-5, 0), Vector2(-2, 0), Vector2(0, 0), Vector2(0, 0), Vector2(5, 0), Vector2(2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7v57k"]
+_data = {
+&"RESET": SubResource("Animation_d7cy4"),
+&"appear": SubResource("Animation_xrrod")
+}
+
+[node name="npc_nightmare" type="StaticBody2D" unique_id=1815487601]
+script = ExtResource("1_d7cy4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1372402347]
+sprite_frames = SubResource("SpriteFrames_7v57k")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=10991132]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_1pfvr")
+
+[node name="InteractableArea" type="Area2D" parent="." unique_id=2070287554]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=1810638566]
+position = Vector2(-11.5, -1.5)
+shape = SubResource("RectangleShape2D_bnb75")
+debug_color = Color(0.8100224, 4.813075e-08, 0.43864137, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1041485636]
+libraries/ = SubResource("AnimationLibrary_7v57k")
